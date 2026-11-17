@@ -1,0 +1,13 @@
+{
+  "name": "about-me-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static personal portfolio with a local interactive command interface.",
+  "scripts": {
+    "check": "node --check script.js && node scripts/validate.mjs",
+    "validate": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
