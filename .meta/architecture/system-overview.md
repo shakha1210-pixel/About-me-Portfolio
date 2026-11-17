@@ -23,6 +23,7 @@ flowchart TB
     VoiceIn["Browser SpeechRecognition<br/>Optional voice input"]
     VoiceOut["Browser SpeechSynthesis<br/>Optional spoken output"]
     GH["GitHub repository"]
+    CI["Node.js validation"]
     Pages["GitHub Pages<br/>Static hosting workflow"]
 
     Visitor --> Browser
@@ -33,7 +34,8 @@ flowchart TB
     JS -. optional .-> VoiceIn
     VoiceIn -. transcript .-> JS
     JS -. optional .-> VoiceOut
-    GH --> Pages
+    GH --> CI
+    CI --> Pages
     Pages --> Browser
 ```
 
@@ -47,7 +49,9 @@ flowchart TB
 | Local knowledge base | Verified answers about the portfolio owner and projects | Rule-based data and intent matching; not an LLM |
 | Speech recognition | Converts microphone speech to text when browser support and permission exist | Optional browser API |
 | Speech synthesis | Reads responses when supported and enabled | Optional browser API |
-| GitHub Actions | Publishes the repository's static site when the configured workflow runs | CI/CD workflow |
+| `scripts/validate.mjs` | Checks required files, metadata, IDs, fragment links, local assets, terminal hooks, and key destinations | Dependency-free Node.js static validation |
+| `package.json` | Exposes `npm run check` and `npm run validate` | No runtime dependencies |
+| GitHub Actions | Runs validation on pull requests and before publishing | CI/CD workflow |
 | GitHub Pages | Serves the built static files | Hosting target; deployment must be verified independently |
 
 ## 4. Command interaction flow
@@ -73,12 +77,13 @@ The command engine is deliberately local and deterministic. It must not claim to
 ```mermaid
 flowchart LR
     Feature["Feature branch"] --> Review["Pull request"]
-    Review --> Main["main"]
+    Review --> Validate["Node.js validation"]
+    Validate --> Main["main"]
     Main --> Workflow["GitHub Actions"]
     Workflow --> Pages["GitHub Pages"]
 ```
 
-The current portfolio work is maintained on `feat/premium-portfolio-foundation` and reviewed through PR #1. A pull request being open does not mean the changes are merged or deployed.
+The current portfolio work is maintained on `feat/premium-portfolio-foundation` and reviewed through PR #1. Pull requests run static validation; deployment is skipped for pull-request events. A pull request being open does not mean the changes are merged or deployed.
 
 ## 6. Security and quality boundaries
 
@@ -89,6 +94,7 @@ The current portfolio work is maintained on `feat/premium-portfolio-foundation` 
 - Voice output is opt-in and should remain disabled by default.
 - Reduced-motion preferences must be respected.
 - Project descriptions must distinguish current implementation from roadmap items.
+- Static validation is a fast integrity check, not a browser, accessibility, or end-to-end test.
 
 ## 7. Explicit non-goals of the current system
 
@@ -107,4 +113,5 @@ Update this document when:
 - the command engine changes from local rules to model-backed orchestration;
 - persistence or user accounts are introduced;
 - hosting/build architecture changes;
-- a new runtime integration materially changes the security boundary.
+- a new runtime integration materially changes the security boundary;
+- the validation suite or CI delivery gates materially change.
