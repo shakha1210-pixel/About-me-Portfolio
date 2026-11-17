@@ -55,4 +55,18 @@
     }, { rootMargin: "-35% 0px -55% 0px" });
     sections.forEach((section) => sectionObserver.observe(section));
   }
+
+  const terminalOutput = document.querySelector("#terminal-output");
+  document.querySelectorAll("[data-command]").forEach((command) => {
+    command.addEventListener("click", () => {
+      if (!terminalOutput) return;
+      const destination = command.dataset.command;
+      const messages = {
+        projects: "Routing to selected work. Three projects found.",
+        profile: "Opening operator profile. Identity verified.",
+        contact: "Contact channel selected. Ready to connect."
+      };
+      terminalOutput.textContent = messages[destination] || "Command acknowledged.";
+    });
+  });
 })();
