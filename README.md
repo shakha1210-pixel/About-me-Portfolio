@@ -300,7 +300,116 @@ Apeiron and NEXUS are **separate, independent projects today**. A future unified
 
 ---
 
-## 05 / Technical interests
+## 05 / Architecture maps
+
+These diagrams are intentionally split into **current implementation** and **future direction**. They describe verified repository boundaries at a high level, not every internal class or deployment detail.
+
+### Apeiron — current implementation
+
+```mermaid
+flowchart TB
+    U["User"] --> UI["Web UI<br/>HTML · CSS · Vanilla JS"]
+    UI --> API["FastAPI application"]
+    API --> AUTH["Authentication & ownership checks"]
+    API --> CONN["Provider connections API"]
+    API --> AGENT["Agent configuration & text-run API"]
+    CONN --> REG["Provider registry & adapter factory"]
+    REG --> ADAPT["Provider adapters"]
+    ADAPT --> EXT["External model APIs"]
+    CONN --> ENC["Credential encryption<br/>Fernet"]
+    ENC --> DB[("SQLAlchemy data layer<br/>SQLite / PostgreSQL")]
+    AGENT --> DB
+    API --> LEGACY["Existing chat / legacy routes"]
+```
+
+<sub>Current-state view: the provider and agent APIs are implemented as a separate workspace foundation. They are not yet a complete replacement for all legacy chat routing.</sub>
+
+### Apeiron — intended evolution
+
+```mermaid
+flowchart TB
+    CLIENT["Workspace UI<br/>Projects · Files · Agents · Editor"] --> API["FastAPI<br/>Auth · Validation · Workspace API"]
+    API --> DOMAIN["Workspace domain<br/>Projects · Connections · Agents · Runs"]
+    DOMAIN --> ORCH["Orchestrator<br/>Task graph · Handoffs · Approval"]
+    ORCH --> GATEWAY["Model gateway<br/>Normalized generation / streaming"]
+    GATEWAY --> PROVIDERS["Provider adapters"]
+    ORCH --> TOOLS["Controlled tools<br/>Workspace FS · Git · Search"]
+    TOOLS --> SANDBOX["Isolated execution sandbox"]
+    DOMAIN --> DATA[("Users · Connections · Projects<br/>Agents · Runs · Artifacts")]
+```
+
+<sub>Target-state concept only. Orchestration, task graph, isolated execution, and the complete workspace interface are not represented as finished features.</sub>
+
+### NEXUS — current application structure
+
+```mermaid
+flowchart TB
+    DESKTOP["Desktop shell<br/>PyWebView"] --> FRONT["React 18 + TypeScript + Vite"]
+    BROWSER["Browser UI"] --> FRONT
+    FRONT --> API["FastAPI backend"]
+    FRONT --> CHAT["Chat & streaming"]
+    FRONT --> EXPLORER["Workspace Explorer"]
+    FRONT --> AGENT["Agent panel"]
+    API --> PROVIDER["Provider manager"]
+    PROVIDER --> OLLAMA["Ollama adapter"]
+    PROVIDER --> OPENAI["OpenAI-compatible adapter"]
+    API --> RUNTIME["Agent runtime"]
+    RUNTIME --> PERM["Scoped permissions<br/>Control / approval flow"]
+    API --> KAGGLE["Optional Kaggle integration"]
+    API --> SECRETS["Credential storage"]
+```
+
+<sub>High-level map of the documented current foundation. It is a modular application, not a claim that each box is a separately deployed service.</sub>
+
+### How to read the diagrams
+
+| Visual convention | Meaning |
+|:--|:--|
+| Solid path in current-state maps | Documented application component or integration |
+| Target-state map | Planned architectural direction |
+| External provider | User-configured model/API service |
+| Isolated sandbox | Required future security boundary for executing untrusted code |
+
+## 06 / Engineering decisions
+
+A portfolio should show not only *what* exists, but also *why* the system is shaped this way.
+
+### Apeiron
+
+| Decision | Reasoning |
+|:--|:--|
+| Provider adapter boundary | Keep vendor-specific request/response behavior behind a normalized interface. |
+| Server-side encrypted credentials | Avoid exposing raw provider keys to browser storage or API responses. |
+| Owner-scoped resources | Prevent one user's connections or agents from being accessed by another user. |
+| Deny-by-default agent capabilities | Configuration must not silently grant tools that have no safe execution boundary. |
+| Incremental migration | Preserve existing chat behavior while the workspace foundation is developed and verified. |
+
+### NEXUS
+
+| Decision | Reasoning |
+|:--|:--|
+| Local-first model support | Keep Ollama as a first-class option rather than requiring a hosted inference provider. |
+| Provider abstraction | Give the interface a consistent way to work with Ollama and compatible remote APIs. |
+| Modular monolith | Strengthen clear internal boundaries before introducing distributed services. |
+| Scoped workspace access | Keep agent file operations within explicitly permitted workspace boundaries. |
+| Progressive complexity | Keep the default chat experience approachable while making advanced workspace capabilities accessible when needed. |
+
+### My role in these projects
+
+My contribution is centered on product direction and development coordination:
+
+- Translating broad product goals into architecture maps and staged roadmaps.
+- Breaking implementation into focused tasks with dependencies and checkpoints.
+- Coordinating AI-assisted implementation, independent review, and debugging.
+- Following integration points across frontend, backend, providers, and workspace modules.
+- Reviewing test feedback and manually exploring application behavior.
+- Recording implementation status, known limitations, and next milestones.
+
+I do not present AI-generated implementation as proof of independent mastery of every technology. My focus is on making the development process structured, reviewable, and transparent.
+
+---
+
+## 07 / Technical interests
 
 - AI-assisted software development and multi-agent workflows
 - Product and application architecture
