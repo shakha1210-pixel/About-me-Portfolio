@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090d">
+  <meta name="description" content="Dilshodbek Qosimov — product-focused developer exploring software architecture, AI-assisted engineering, and meaningful digital products.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dilshodbek Qosimov — Product-minded Developer">
+  <meta property="og:description" content="Turning ambitious product ideas into structured, testable software.">
+  <meta property="og:image" content="assets/og-preview.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Dilshodbek Qosimov — Product-minded Developer</title>
+</head>
+<body>
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Dilshodbek Qosimov home">
+      <span class="brand-mark">D<span>Q</span></span>
+      <span class="brand-name">DILSHODBEK<span>QOSIMOV</span></span>
+    </a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span>
+    </button>
+    <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#work">Selected work</a>
+      <a href="#approach">Approach</a>
+      <a href="#journey">Journey</a>
+      <a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero hero--command section-shell" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> PERSONAL INTERFACE <span class="eyebrow-divider">/</span> SAMARKAND, UZ</div>
+        <p class="hero-overline">DILSHODBEK QOSIMOV <span>·</span> PRODUCT-MINDED DEVELOPER</p>
+        <h1>Think beyond.<br><span class="text-gradient">Build what's</span><br>next<span class="period">.</span></h1>
+        <p class="hero-lede">A systems-minded builder exploring the intersection of product thinking, software architecture, and AI-assisted engineering.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">Explore the projects <span>↘</span></a>
+          <a class="text-link" href="#contact">Establish contact <span>↗</span></a>
+        </div>
+        <div class="hero-meta"><span><i class="meta-line"></i> SYSTEMS THINKING</span><span><i class="meta-line"></i> PRODUCT ENGINEERING</span><span><i class="meta-line"></i> AI WORKFLOWS</span></div>
+      </div>
+      <div class="hero-console" aria-label="Interactive personal interface">
+        <div class="console-topbar"><span><i class="console-live"></i> DQ INTELLIGENCE INTERFACE</span><span>BUILD 001.26</span></div>
+        <div class="console-stage">
+          <div class="stage-grid" aria-hidden="true"></div>
+          <div class="hud-label hud-label--top">CORE SYSTEM <b>01 / 04</b></div>
+          <div class="hud-label hud-label--left">PROCESSING<br><b>IDEAS → SYSTEMS</b></div>
+          <div class="hud-label hud-label--right">UPTIME<br><b>ALWAYS EVOLVING</b></div>
+          <div class="core-wrap" aria-hidden="true">
+            <div class="core-orbit core-orbit--one"></div><div class="core-orbit core-orbit--two"></div><div class="core-orbit core-orbit--three"></div>
+            <div class="core-aura"></div><div class="core-sphere"><span>DQ</span><i></i></div>
+            <span class="core-cross core-cross--a"></span><span class="core-cross core-cross--b"></span>
+            <span class="core-particle particle--a"></span><span class="core-particle particle--b"></span><span class="core-particle particle--c"></span>
+          </div>
+          <div class="core-readout"><span>IDENTITY SIGNATURE</span><strong>DQ<span>—</span>001</strong></div>
+          <div class="core-coordinate">39°39' N<br>66°57' E</div>
+          <div class="scan-line" aria-hidden="true"></div>
+        </div>
+        <div class="console-metrics">
+          <div><span>FOCUS</span><strong>PRODUCTS</strong></div><div><span>MODE</span><strong>EXPLORATION</strong></div><div><span>BASE</span><strong>UZ / UTC+5</strong></div>
+        </div>
+        <div class="console-terminal" id="command-terminal">
+          <div class="terminal-heading"><span><i></i> INTERFACE COMMANDS</span><span id="terminal-state">LOCAL MODE / READY</span></div>
+          <div class="terminal-output" id="terminal-output" role="status" aria-live="polite">System initialized. Type <b>help</b> to see available commands.</div>
+          <form class="terminal-form" id="terminal-form" autocomplete="off">
+            <label class="terminal-prompt" for="terminal-input" aria-label="Command prompt">›</label>
+            <input id="terminal-input" name="command" type="text" placeholder="Ask the interface or type a command..." spellcheck="false" aria-label="Enter a portfolio command">
+            <button class="terminal-submit" type="submit" aria-label="Run command">RUN <span>↗</span></button>
+          </form>
+          <div class="terminal-tools">
+            <div class="terminal-commands" aria-label="Suggested commands">
+              <button type="button" data-command="projects">[ PROJECTS ]</button>
+              <button type="button" data-command="about">[ PROFILE ]</button>
+              <button type="button" data-command="contact">[ CONTACT ]</button>
+              <button type="button" data-command="help">[ HELP ]</button>
+            </div>
+            <div class="terminal-voice">
+              <button type="button" class="voice-button" id="voice-input" aria-label="Use voice input" title="Use voice input">MIC <span>◉</span></button>
+              <button type="button" class="voice-button" id="voice-output" aria-pressed="false" aria-label="Enable spoken responses" title="Enable spoken responses">VOICE <span>OFF</span></button>
+            </div>
+          </div>
+          <p class="terminal-hint">TIP: PRESS <kbd>/</kbd> TO FOCUS · <kbd>↑</kbd> PREVIOUS COMMAND · <kbd>ESC</kbd> TO EXIT</p>
+        </div>
+      </div>
+      <div class="hero-index"><span>SCROLL TO EXPLORE</span><span class="scroll-line"></span><span>01 — 06</span></div>
+    </section>
+
+    <section class="intro-band">
+      <div class="section-shell intro-grid">
+        <span class="section-kicker">A NOTE ON MY WORK</span>
+        <p>I care about the space between an idea and a working product — making complexity understandable, decisions deliberate, and progress <em>verifiable.</em></p>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="about">
+      <div class="section-heading reveal">
+        <span class="section-kicker">01 / ABOUT</span>
+        <h2>Curiosity, shaped<br>into <span class="text-gradient">systems.</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-main reveal">
+          <p class="large-copy">I’m an aspiring product-focused developer interested in application architecture, AI-assisted engineering, and building software products from the ground up.</p>
+          <p>My strongest contribution is in structuring and coordinating development: translating product ideas into architecture maps, decomposing complex work into manageable tasks, coordinating AI tools, and validating the resulting experience.</p>
+          <p>I think in systems — how modules communicate, how data moves, where failure can happen, and whether the product makes sense from the user's point of view.</p>
+        </div>
+        <aside class="about-aside reveal">
+          <div class="profile-fact"><span>BASED IN</span><strong>Uzbekistan <small>UTC +5</small></strong></div>
+          <div class="profile-fact"><span>LANGUAGES</span><strong>Uzbek <small>Native</small></strong><strong>English <small>B1 · progressing toward B2</small></strong></div>
+          <div class="profile-fact"><span>CURRENT FOCUS</span><strong>Product architecture</strong><strong>AI-assisted development</strong><strong>Technical orchestration</strong></div>
+          <a class="underlined-link" href="https://github.com/shakha1210-pixel" target="_blank" rel="noreferrer">Explore my GitHub <span>↗</span></a>
+        </aside>
+      </div>
+      <div class="transparency-note reveal"><span class="note-mark">!</span><p><strong>Transparency is part of the craft.</strong> My personal projects involve substantial AI assistance. I use AI tools as implementation collaborators while focusing on planning, orchestration, review, and product-level validation. Listed technologies describe each project's environment, not a claim of professional mastery in every tool.</p></div>
+    </section>
+
+    <section class="section work-section" id="work">
+      <div class="section-shell">
+        <div class="section-heading section-heading--row reveal">
+          <div><span class="section-kicker">02 / SELECTED WORK</span><h2>Built to explore.<br><span class="text-gradient">Made to evolve.</span></h2></div>
+          <p class="heading-aside">A selection of independent experiments and products. Each project is presented with its current scope — not just its ambition.</p>
+        </div>
+        <article class="project project--apeiron reveal">
+          <div class="project-visual visual-apeiron">
+            <div class="visual-label"><span>01 / AI WORKSPACE</span><span>ACTIVE DEVELOPMENT</span></div>
+            <div class="apeiron-ui">
+              <div class="ui-sidebar"><b>◈ APEIRON</b><i></i><i></i><i></i><i></i><small>WORKSPACE</small><i></i><i></i></div>
+              <div class="ui-main"><div class="ui-top"><span>YOUR WORKSPACE</span><span class="ui-pill">CONNECTED</span></div><div class="ui-title">Make room for<br><em>better thinking.</em></div><div class="ui-cards"><div><small>PROVIDERS</small><b>03</b><span>Connections</span></div><div><small>AGENTS</small><b>02</b><span>Configurations</span></div></div><div class="ui-input">Ask your workspace anything... <span>↗</span></div></div>
+            </div>
+            <div class="visual-foot"><span>CONFIGURE / CONNECT / EXPLORE</span><span>AP—01</span></div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">01 <span>—</span> 03</div>
+            <div><div class="project-type">AI WORKSPACE · BACKEND-LED PRODUCT</div><h3>Apeiron</h3><p>A configurable AI workspace exploring a unified environment for model providers, agent configurations, and future orchestration capabilities.</p>
+              <ul class="feature-list"><li>Provider registry & adapter foundation</li><li>Encrypted credential storage</li><li>Agent configuration builder</li><li>One-turn text generation</li></ul>
+              <div class="tech-list"><span>FASTAPI</span><span>SQLALCHEMY</span><span>PYDANTIC</span><span>VANILLA JS</span></div>
+              <a class="project-link" href="https://github.com/shakha1210-pixel/AI-model" target="_blank" rel="noreferrer">Explore repository <span>↗</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="project project--nexus reveal">
+          <div class="project-visual visual-nexus">
+            <div class="visual-label"><span>02 / LOCAL AI TERMINAL</span><span>ACTIVE DEVELOPMENT</span></div>
+            <div class="nexus-ui">
+              <div class="nexus-top"><span><b>◉ NEXUS</b> / WORKSPACE</span><span>● LOCAL SESSION</span></div>
+              <div class="nexus-body"><div class="nexus-rail"><i></i><i></i><i></i><i></i></div><div class="nexus-chat"><small>MODEL / LLAMA 3</small><h4>What are we<br>building today?</h4><p>Let's turn the next idea into something real.</p><div class="nexus-prompt">Message your model... <span>↑</span></div></div><div class="nexus-panel"><small>WORKSPACE</small><i>⌁ &nbsp; project</i><i>⌁ &nbsp; src</i><i>⌁ &nbsp; components</i><i>⌁ &nbsp; app.tsx</i></div></div>
+            </div>
+            <div class="visual-foot"><span>LOCAL-FIRST / MODEL-AGNOSTIC</span><span>NX—02</span></div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">02 <span>—</span> 03</div>
+            <div><div class="project-type">DESKTOP AI WORKSPACE · LOCAL-FIRST</div><h3>NEXUS</h3><p>A desktop-oriented AI environment bringing local and compatible remote models, streaming conversations, and workspace tools into one interface.</p>
+              <ul class="feature-list"><li>Ollama & OpenAI-compatible providers</li><li>Streaming chat and conversation history</li><li>Workspace Explorer</li><li>Initial agent runtime and permission flow</li></ul>
+              <div class="tech-list"><span>REACT</span><span>TYPESCRIPT</span><span>FASTAPI</span><span>PYWEBVIEW</span></div>
+              <a class="project-link" href="https://github.com/shakha1210-pixel/Nexus-AI-Terminal-for-Ollama" target="_blank" rel="noreferrer">Explore repository <span>↗</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="project project--logic reveal">
+          <div class="project-visual visual-logic">
+            <div class="visual-label"><span>03 / MODULAR JAVASCRIPT</span><span>EXPERIMENT</span></div>
+            <div class="logic-visual"><div class="logic-hub">LOGIC<br><span>HUB</span></div><div class="logic-ring"></div><div class="logic-chip chip-a">ACHIEVEMENT<br>ENGINE</div><div class="logic-chip chip-b">CHALLENGE<br>ENGINE</div><div class="logic-chip chip-c">EVENT<br>ENGINE</div><div class="logic-chip chip-d">RANKING<br>ENGINE</div></div>
+            <div class="visual-foot"><span>SEPARATION OF CONCERNS</span><span>LH—03</span></div>
+          </div>
+          <div class="project-info">
+            <div class="project-number">03 <span>—</span> 03</div>
+            <div><div class="project-type">MODULAR JAVASCRIPT · LOGIC SYSTEMS</div><h3>Logic-Hub</h3><p>A modular JavaScript project organized around focused engines and a central core, exploring separation of responsibilities and maintainable logic.</p>
+              <ul class="feature-list"><li>Achievement engine</li><li>Challenge and event engines</li><li>Core logic module</li><li>Ranking engine</li></ul>
+              <div class="tech-list"><span>JAVASCRIPT</span><span>MODULAR DESIGN</span></div>
+              <a class="project-link" href="https://github.com/shakha1210-pixel/Logic-Hub" target="_blank" rel="noreferrer">Explore repository <span>↗</span></a>
+            </div>
+          </div>
+        </article>
+        <p class="project-footnote">Apeiron and NEXUS are separate projects today. Any future unification remains an idea, not a completed integration.</p>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="approach">
+      <div class="section-heading reveal"><span class="section-kicker">03 / HOW I WORK</span><h2>Structure before<br><span class="text-gradient">speed.</span></h2></div>
+      <div class="principles-grid">
+        <article class="principle reveal"><span>01</span><h3>Architecture before implementation</h3><p>Clarify the product goal, map modules and interfaces, and identify dependencies before execution begins.</p></article>
+        <article class="principle reveal"><span>02</span><h3>Decompose complexity</h3><p>Convert large goals into small, ordered tasks with clear outcomes and checkpoints.</p></article>
+        <article class="principle reveal"><span>03</span><h3>Coordinate with intention</h3><p>Use focused AI agents for implementation, review, and debugging — then compare and verify their outputs.</p></article>
+        <article class="principle reveal"><span>04</span><h3>Validate real behavior</h3><p>Run available checks, inspect dependencies, and explore realistic user journeys to find issues.</p></article>
+        <article class="principle reveal"><span>05</span><h3>Keep work traceable</h3><p>Maintain task plans, implementation steps, technical notes, and clear integration points.</p></article>
+        <article class="principle reveal"><span>06</span><h3>Be explicit about status</h3><p>Separate implemented features from experiments, limitations, and future plans.</p></article>
+      </div>
+    </section>
+
+    <section class="journey-section" id="journey">
+      <div class="section-shell journey-grid">
+        <div class="section-heading reveal"><span class="section-kicker">04 / THE JOURNEY</span><h2>Always in<br><span class="text-gradient">progress.</span></h2></div>
+        <div class="journey-content reveal">
+          <div class="timeline-item"><span class="timeline-date">2022</span><div><h3>Frontend development foundations</h3><p>Rakhmonov IT School · Samarkand</p><span class="timeline-detail">Studied frontend development and built foundational skills in web technologies.</span></div></div>
+          <div class="timeline-item"><span class="timeline-date">ONGOING</span><div><h3>Independent product experiments</h3><p>Apeiron · NEXUS · Logic-Hub</p><span class="timeline-detail">Learning through product exploration, architecture, implementation coordination, and iterative validation.</span></div></div>
+          <div class="journey-note"><span>ALWAYS LEARNING</span><p>From interfaces to systems thinking — building, questioning, documenting, and improving one iteration at a time.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell collaboration-section">
+      <div class="collab-card reveal">
+        <div><span class="section-kicker">05 / OPEN TO COLLABORATION</span><h2>Good ideas get<br>better <span class="text-gradient">together.</span></h2></div>
+        <div class="collab-copy"><p>Interested in thoughtful early-stage products, practical AI workflows, and collaborative building. If you're exploring an idea or need a curious, structured contributor, let's compare notes.</p><a class="button button-light" href="mailto:shakha1210@gmail.com?subject=Let's%20collaborate">Start a conversation <span>↗</span></a></div>
+        <div class="collab-orbit" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="section-shell contact-inner">
+        <span class="section-kicker">06 / CONTACT</span>
+        <h2>Have something<br>in <span class="text-gradient">mind?</span></h2>
+        <a class="contact-email" href="mailto:shakha1210@gmail.com">shakha1210@gmail.com <span>↗</span></a>
+        <div class="contact-bottom"><p>Open to conversations, ideas, and meaningful collaborations.</p><div><a href="https://github.com/shakha1210-pixel" target="_blank" rel="noreferrer">GITHUB ↗</a><a href="mailto:shakha1210@gmail.com">EMAIL ↗</a></div></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="section-shell footer-inner"><a class="footer-brand" href="#home">DQ<span>.</span></a><span>BUILT WITH CURIOSITY & INTENTION.</span><span>© <b id="year"></b> DILSHODBEK QOSIMOV</span></div></footer>
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -26,7 +26,7 @@
 
 <div align="center">
 
-[ABOUT](#about) &nbsp;·&nbsp; [APPROACH](#engineering-approach) &nbsp;·&nbsp; [WORKFLOW](#workflow) &nbsp;·&nbsp; [CASE STUDIES](#selected-work) &nbsp;·&nbsp; [EDUCATION](#education) &nbsp;·&nbsp; [CONTACT](#contact)
+[ABOUT](#about) &nbsp;·&nbsp; [APPROACH](#engineering-approach) &nbsp;·&nbsp; [WORKFLOW](#workflow) &nbsp;·&nbsp; [CASE STUDIES](#selected-work) &nbsp;·&nbsp; [META-SYSTEM](#repository-meta-system) &nbsp;·&nbsp; [EDUCATION](#education) &nbsp;·&nbsp; [CONTACT](#contact)
 
 </div>
 
@@ -417,7 +417,31 @@ I do not present AI-generated implementation as proof of independent mastery of 
 
 ---
 
-## 07 / Technical interests
+## 07 / Repository meta-system
+
+This repository includes a small documentation control plane under `.meta/`. It keeps the public portfolio narrative connected to the actual implementation without exposing internal notes in the visitor-facing website.
+
+| Document | Purpose |
+|:--|:--|
+| [System architecture](.meta/architecture/system-overview.md) | Current runtime boundaries, command flow, and delivery architecture |
+| [Documentation architecture](.meta/architecture/documentation-architecture.md) | README structure, evidence hierarchy, and update protocol |
+| [ADR-0001](.meta/decisions/ADR-0001-meta-system.md) | Why the repository meta-system was introduced |
+| [Development log](.meta/logs/DEVELOPMENT_LOG.md) | Append-only implementation and verification history |
+| [ADR template](.meta/templates/ADR-TEMPLATE.md) | Template for recording future architectural decisions |
+
+### Automated repository checks
+
+Run the static integrity checks locally with Node.js 20 or newer:
+
+```bash
+npm run check
+```
+
+The check validates required files, document metadata, unique HTML IDs, internal fragment links, local assets, terminal integration hooks, reduced-motion support, and key project/contact destinations. It has no third-party package dependencies.
+
+GitHub Actions runs this validation for pull requests and before a main-branch Pages build. These checks are not a substitute for browser-based end-to-end, accessibility, or project-application testing. GitHub Pages must be enabled with **GitHub Actions** as its publishing source before deployment can succeed.
+
+## 08 / Technical interests
 
 - AI-assisted software development and multi-agent workflows
 - Product and application architecture
@@ -427,7 +451,7 @@ I do not present AI-generated implementation as proof of independent mastery of 
 - Testing, debugging workflows, and exploratory QA
 - Developer productivity and interactive user experiences
 
-## 08 / Education
+## 09 / Education
 
 **Rakhmonov IT School — Samarkand**  
 Frontend Development · 2022
@@ -436,14 +460,14 @@ Frontend Development · 2022
 - Frontend Development
 - HTML / CSS
 
-## 09 / Achievements
+## 10 / Achievements
 
 - Repeated first-place results in district-level IT competitions.
 - Participation in regional-level IT competitions.
 
 ---
 
-## 10 / Contact
+## 11 / Contact
 
 Interested in product development, AI-assisted engineering workflows, and opportunities where structured thinking and careful execution matter.
 
