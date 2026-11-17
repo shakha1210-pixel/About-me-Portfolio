@@ -75,3 +75,16 @@ This log records meaningful repository changes and the validation actually perfo
 - The `validate` job passed, including `npm run check`.
 - The Pages `build` and `deploy` jobs were correctly skipped for the pull-request event.
 - This confirms the PR validation path only; Pages publishing remains unverified and requires Pages to be enabled on the repository.
+
+## 2026-11-17 — Public README connected to the meta-system
+
+**Change**
+- Added a concise repository meta-system section to the root README.
+- Linked the public documentation map to current architecture, documentation policy, ADR-0001, the development log, and the ADR template.
+- Documented the local `npm run check` command, its Node.js requirement, validation scope, and limitations.
+- Updated the README information architecture to include the new section.
+
+**Validation**
+- Confirmed the referenced documentation files exist on the feature branch.
+- The CI validation job passed on the pull request.
+- README changes are documentation navigation and workflow guidance; they do not claim browser end-to-end or Pages deployment success.
