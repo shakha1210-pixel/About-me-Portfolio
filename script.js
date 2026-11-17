@@ -74,35 +74,139 @@
     collaboration: ".collaboration-section"
   };
 
-  const helpText = "Available: help · projects · about · journey · contact · status · clear. Try: “show me your projects”.";
-  const normalize = (value) => value.toLowerCase().trim().replace(/[?!.,]/g, "").replace(/\s+/g, " ");
+  const helpText = [
+    "LOCAL KNOWLEDGE BASE / AVAILABLE TOPICS",
+    "• profile — role, focus, working style",
+    "• apeiron — purpose, stack, current scope, limitations",
+    "• nexus — purpose, stack, current scope, limitations",
+    "• logic hub — modules and project scope",
+    "• compare projects — how Apeiron and NEXUS differ",
+    "• education — learning background",
+    "• languages — communication",
+    "• collaboration — contact details",
+    "• status / clear — terminal controls",
+    "Try natural questions such as: “What does NEXUS do?” or “What is Apeiron built with?”"
+  ].join("\n");
+
+  const normalize = (value) => value
+    .toLowerCase()
+    .trim()
+    .replace(/[’']/g, "")
+    .replace(/[?!.,]/g, "")
+    .replace(/\s+/g, " ");
+
+  // Verified portfolio facts only. This is a local knowledge base, not an LLM.
+  const knowledge = {
+    profile: [
+      "DILSHODBEK QOSIMOV / PROFILE",
+      "An aspiring product-focused developer interested in application architecture, AI-assisted engineering, and building software products.",
+      "Primary contribution: structuring product work, mapping architecture, decomposing tasks, coordinating AI tools, reviewing integration points, and product-level validation.",
+      "The portfolio is transparent that personal projects use substantial AI assistance; listed technologies describe project environments, not independent professional mastery of every tool."
+    ].join("\n"),
+    apeiron: [
+      "APEIRON / AI WORKSPACE",
+      "Purpose: a configurable AI workspace for connecting model providers and configuring personal agents.",
+      "Current foundation: FastAPI, SQLAlchemy, Pydantic, HTTPX, HTML/CSS/Vanilla JavaScript, SQLite with PostgreSQL support.",
+      "Implemented scope: provider registry and adapters, encrypted credential storage, agent configuration builder, and one-turn text generation.",
+      "Important limits: not yet a complete workspace; the current agent run generates text and does not execute tools. A full sandbox and human-approval runtime are future work.",
+      "Repository: https://github.com/shakha1210-pixel/AI-model"
+    ].join("\n"),
+    nexus: [
+      "NEXUS / AI TERMINAL FOR OLLAMA",
+      "Purpose: a desktop-oriented, local-first AI environment for model conversations and workspace tools.",
+      "Current foundation: FastAPI, React 18, TypeScript, Vite, PyWebView, Ollama and OpenAI-compatible providers.",
+      "Implemented scope: streaming chat, conversation history, Workspace Explorer, initial agent runtime with scoped permissions, and optional user-configured Kaggle integration.",
+      "Important limits: not a full IDE; a complete editor, integrated terminal, language servers, debugger, mature Git UI, and full plugin SDK are not established features.",
+      "Repository: https://github.com/shakha1210-pixel/Nexus-AI-Terminal-for-Ollama"
+    ].join("\n"),
+    logic: [
+      "LOGIC-HUB / MODULAR JAVASCRIPT",
+      "A modular JavaScript project organized around focused engines and a central core.",
+      "Known modules: Achievement Engine, Challenge Engine, Event Engine, Logic-Hub Core, and Ranking Engine.",
+      "Repository: https://github.com/shakha1210-pixel/Logic-Hub"
+    ].join("\n"),
+    education: [
+      "LEARNING BACKGROUND",
+      "Rakhmonov IT School, Samarkand — Frontend Development, 2022.",
+      "HTML and CSS certificates.",
+      "District-level IT competition wins and regional-level participation."
+    ].join("\n"),
+    languages: "LANGUAGES: Uzbek — native. English — approximately B1, progressing toward B2.",
+    collaboration: "COLLABORATION: Open to thoughtful early-stage products, practical AI workflows, and collaborative building. Email: shakha1210@gmail.com",
+    approach: [
+      "WORKING APPROACH",
+      "1. Clarify the product goal and map architecture.",
+      "2. Decompose complex work into ordered, verifiable tasks.",
+      "3. Coordinate focused AI-assisted implementation and review.",
+      "4. Inspect integration boundaries and validate real behavior.",
+      "5. Document decisions, current status, and known limitations."
+    ].join("\n")
+  };
 
   const commandEngine = {
     mode: "local",
     async execute(rawCommand) {
       const query = normalize(rawCommand);
-      if (!query) return { message: "Enter a command to get started." };
+      if (!query) return { message: "Enter a question or command to get started." };
 
       if (/^(help|commands|what can you do)$/.test(query) || query.includes("show commands")) {
         return { message: helpText };
       }
       if (/^(clear|cls)$/.test(query)) return { message: "", clear: true };
       if (/^(status|system status|are you online)$/.test(query)) {
-        return { message: "Interface operational. Command engine: local. External AI: not connected. Voice features: browser-dependent." };
+        return { message: "Interface operational. Knowledge mode: local and rule-based. External AI: not connected. Voice features: browser-dependent." };
       }
 
-      const routes = [
-        { match: /\b(projects?|work|portfolio|repositories|github)\b|show me .*projects|what have you built/, key: "projects", message: "Opening selected work. Three project entries are available." },
-        { match: /\b(about|profile|who are you|who is dilshodbek|operator)\b|tell me about yourself/, key: "about", message: "Opening operator profile and working approach." },
-        { match: /\b(journey|education|background|timeline)\b/, key: "journey", message: "Opening the learning and project timeline." },
-        { match: /\b(contact|email|reach|collaborat|hire)\b|talk to you/, key: "contact", message: "Contact channel selected. Let's start a conversation." }
-      ];
-      const route = routes.find((item) => item.match.test(query));
-      if (route) return { message: route.message, destination: destinations[route.key] };
       if (/^(hello|hi|hey|jarvis|good morning|good evening)$/.test(query)) {
-        return { message: "Hello, operator. Interface is ready. Type help to see what I can do." };
+        return { message: "Hello. DQ interface is ready. Ask about the profile, projects, technology stacks, education, or collaboration." };
       }
-      return { message: "Command not recognized. Try “projects”, “about”, “contact”, or “help”." };
+
+      if (/\b(compare|difference|differentiate)\b/.test(query) && /\b(apeiron|nexus)\b/.test(query)) {
+        return {
+          message: [
+            "APEIRON vs NEXUS",
+            "APEIRON explores a configurable AI workspace, with a backend-led provider and agent-configuration foundation.",
+            "NEXUS is a desktop-oriented, local-first AI terminal with React UI, streaming conversations, Workspace Explorer, and an initial agent runtime.",
+            "They are separate projects today. A future unification is only an idea; they are not merged."
+          ].join("\n"),
+          destination: "#work"
+        };
+      }
+
+      if (/\b(apeiron|ai workspace)\b/.test(query)) {
+        return { message: knowledge.apeiron, destination: "#work" };
+      }
+      if (/\b(nexus|ollama terminal|ai terminal)\b/.test(query)) {
+        return { message: knowledge.nexus, destination: "#work" };
+      }
+      if (/\b(logic hub|logic-hub|ranking engine|achievement engine|challenge engine)\b/.test(query)) {
+        return { message: knowledge.logic, destination: "#work" };
+      }
+      if (/\b(education|school|study|studied|certificate|certification|competition|background)\b/.test(query)) {
+        return { message: knowledge.education, destination: "#journey" };
+      }
+      if (/\b(language|languages|speak|english|uzbek)\b/.test(query)) {
+        return { message: knowledge.languages, destination: "#about" };
+      }
+      if (/\b(email|contact|collaborat|hire|reach|work together)\b/.test(query)) {
+        return { message: knowledge.collaboration, destination: "#contact" };
+      }
+      if (/\b(approach|workflow|how do you work|process|method)\b/.test(query)) {
+        return { message: knowledge.approach, destination: "#approach" };
+      }
+      if (/\b(who are you|tell me about yourself|your role|what do you do|your focus|profile|about dilshodbek)\b/.test(query)) {
+        return { message: knowledge.profile, destination: "#about" };
+      }
+      if (/\b(projects?|portfolio|repositories|github|what have you built|show me your work)\b/.test(query)) {
+        return {
+          message: "THREE PROJECTS / APEIRON — configurable AI workspace · NEXUS — local-first AI terminal · LOGIC-HUB — modular JavaScript engines. Ask for a project name to inspect its scope, stack, and current limitations.",
+          destination: "#work"
+        };
+      }
+
+      return {
+        message: "I couldn't match that to the local knowledge base. Try asking about Apeiron, NEXUS, Logic-Hub, technology stacks, education, languages, or type help."
+      };
     }
   };
 
