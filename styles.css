@@ -57,3 +57,25 @@
 @media(max-width:1000px){.hero--command{grid-template-columns:1fr 1fr;gap:22px}.hero--command h1{font-size:clamp(52px,6.5vw,70px)}.console-stage{height:340px}.core-wrap{scale:.86}.hud-label--left{left:12px}.hud-label--right{right:12px}}
 @media(max-width:760px){.hero--command{display:flex;flex-direction:column;align-items:stretch;min-height:auto;padding-top:70px;padding-bottom:85px;gap:38px}.hero--command .hero-copy{padding:0}.hero--command h1{font-size:clamp(58px,12vw,78px)}.hero--command .hero-meta{margin-top:35px}.hero-console{width:100%}.console-stage{height:340px}.hero--command .hero-index{bottom:20px}}
 @media(max-width:430px){.console-stage{height:300px}.core-wrap{scale:.78}.hud-label--left,.hud-label--right{font-size:6px}.console-metrics>div{padding:11px 8px}.console-metrics strong{font-size:8px}.terminal-commands{gap:5px}.terminal-commands a{padding:7px 6px;font-size:6px}.hero--command .hero-actions{flex-wrap:wrap}}
+
+
+/* Interactive terminal controls */
+.terminal-output{min-height:34px;white-space:pre-wrap;overflow-wrap:anywhere}
+.terminal-output b{color:#d7caff;font-weight:500}
+.terminal-form{display:flex;align-items:center;gap:9px;min-height:42px;border:1px solid #a78bfa55;background:#090b12;padding:0 10px;margin:5px 0 10px;transition:border-color .2s,box-shadow .2s}
+.terminal-form:focus-within{border-color:#a78bfa;box-shadow:0 0 0 2px #a78bfa1a}
+.terminal-prompt{font:17px var(--mono);color:var(--lime)}
+.terminal-form input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#f1edff;font:9px var(--mono);padding:11px 0}
+.terminal-form input::placeholder{color:#666b7d}
+.terminal-submit{border:0;background:transparent;color:#b9a5f3;font:8px var(--mono);letter-spacing:.08em;cursor:pointer;padding:8px 0 8px 8px}
+.terminal-submit span{color:var(--lime);margin-left:5px}
+.terminal-tools{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.terminal-commands button,.voice-button{padding:7px 9px;border:1px solid #a78bfa3b;background:transparent;color:#b9a5f3;font:7px var(--mono);letter-spacing:.08em;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.terminal-commands button:hover,.terminal-commands button:focus-visible,.voice-button:hover,.voice-button:focus-visible{background:#a78bfa1c;border-color:#a78bfa;color:#fff}
+.terminal-voice{display:flex;gap:6px;flex-shrink:0}
+.voice-button{color:#8e91a3;border-color:#ffffff1c}
+.voice-button[aria-pressed=true],.voice-button.is-listening{color:var(--lime);border-color:#c5f27b66;background:#c5f27b0c}
+.voice-button:disabled{opacity:.35;cursor:not-allowed}
+.terminal-hint{margin:11px 0 0;color:#606579;font:6px var(--mono);letter-spacing:.1em}
+.terminal-hint kbd{font:inherit;color:#aaa0c8;border:1px solid #ffffff24;padding:2px 4px}
+@media(max-width:430px){.terminal-tools{align-items:flex-start;flex-direction:column}.terminal-voice{width:100%}.voice-button{flex:1}.terminal-form input{font-size:8px}.terminal-hint{font-size:5px}}
