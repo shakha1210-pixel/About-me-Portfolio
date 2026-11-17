@@ -81,6 +81,8 @@
     "• nexus — purpose, stack, current scope, limitations",
     "• logic hub — modules and project scope",
     "• compare projects — how Apeiron and NEXUS differ",
+    "• tech stack — technologies across the projects",
+    "• AI workflow — how AI assistance is used",
     "• education — learning background",
     "• languages — communication",
     "• collaboration — contact details",
