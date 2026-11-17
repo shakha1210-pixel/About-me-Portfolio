@@ -38,3 +38,16 @@ This log records meaningful repository changes and the validation actually perfo
 - Work is maintained on `feat/premium-portfolio-foundation`.
 - PR #1 is the review path into `main`.
 - Merge and successful Pages deployment must be verified separately; neither is implied by this log entry.
+
+## 2026-11-17 — Static validation and CI gate
+
+**Change**
+- Added a dependency-free Node.js validation script for required files, document metadata, unique IDs, internal fragment links, local assets, terminal integration hooks, reduced-motion support, and key project/contact destinations.
+- Added `npm run check` and `npm run validate` scripts.
+- Updated GitHub Actions to validate pull requests and main-branch pushes before the Pages build.
+- Configured deployment to run only for non-pull-request events.
+
+**Validation**
+- Validation infrastructure has been added to the feature branch.
+- The checks have not yet been executed in a local Node.js environment or by GitHub Actions; passing status must be recorded only after an actual run.
+- No browser end-to-end test or successful Pages deployment is claimed.
