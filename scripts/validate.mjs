@@ -68,7 +68,7 @@ check("README local links and image references resolve", () => {
     const clean = decodeURIComponent(ref.split(/[?#]/, 1)[0]);
     return clean && !existsSync(resolve(root, clean));
   });
-  assert.deepEqual(missing, [], \`Missing README references: \${missing.join(", ")}\`);
+  assert.deepEqual(missing, [], "Missing README references: " + missing.join(", "));
 });
 
 check("README exposes the repository meta-system and local check command", () => {
