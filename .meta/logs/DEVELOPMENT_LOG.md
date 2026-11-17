@@ -68,3 +68,10 @@ This log records meaningful repository changes and the validation actually perfo
 - The initial run's `validate` job completed successfully.
 - The first run's build failure is retained here rather than represented as a passing deployment.
 - The corrected workflow still requires a fresh GitHub Actions run to verify the PR path.
+
+### Follow-up verification — corrected pull-request run
+
+- GitHub Actions run [#4](https://github.com/shakha1210-pixel/About-me-Portfolio/actions/runs/44053419976) completed successfully.
+- The `validate` job passed, including `npm run check`.
+- The Pages `build` and `deploy` jobs were correctly skipped for the pull-request event.
+- This confirms the PR validation path only; Pages publishing remains unverified and requires Pages to be enabled on the repository.
