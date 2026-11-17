@@ -61,20 +61,20 @@ check("local HTML assets resolve", () => {
 });
 
 check("README local links and image references resolve", () => {
-  const refs = [...readme.matchAll(/(?:href|src)="([^"]+)"|\\]\\(([^)]+)\\)/g)]
+  const refs = [...readme.matchAll(/(?:href|src)="([^"]+)"|\]\(([^)]+)\)/g)]
     .map((match) => match[1] || match[2]);
   const missing = refs.filter((ref) => {
-    if (!ref || ref.startsWith("#") || /^(?:[a-z]+:|\\/\\/)/i.test(ref)) return false;
+    if (!ref || ref.startsWith("#") || /^(?:[a-z]+:|\/\/)/i.test(ref)) return false;
     const clean = decodeURIComponent(ref.split(/[?#]/, 1)[0]);
     return clean && !existsSync(resolve(root, clean));
   });
-  assert.deepEqual(missing, [], `Missing README references: ${missing.join(", ")}`);
+  assert.deepEqual(missing, [], \`Missing README references: \${missing.join(", ")}\`);
 });
 
 check("README exposes the repository meta-system and local check command", () => {
-  assert.match(readme, /\\[System architecture\\]\\(\\.meta\\/architecture\\/system-overview\\.md\\)/);
-  assert.match(readme, /\\[Development log\\]\\(\\.meta\\/logs\\/DEVELOPMENT_LOG\\.md\\)/);
-  assert.match(readme, /npm run check/);
+  assert.ok(readme.includes("[System architecture](.meta/architecture/system-overview.md)"));
+  assert.ok(readme.includes("[Development log](.meta/logs/DEVELOPMENT_LOG.md)"));
+  assert.ok(readme.includes("npm run check"));
 });
 
 check("interactive terminal hooks exist in markup and script", () => {
