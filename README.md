@@ -17,6 +17,14 @@
 ---
 
 <div align="center">
+  <h2>PORTFOLIO PREVIEW</h2>
+  <p><sub>A visual concept of the portfolio experience · simulated interface, not a live product screenshot</sub></p>
+  <img src="assets/portfolio-preview.svg" width="100%" alt="Dark navy and violet portfolio preview showing profile, selected projects, architecture overview, achievements and contact" />
+</div>
+
+---
+
+<div align="center">
 
 [ABOUT](#about) &nbsp;·&nbsp; [APPROACH](#engineering-approach) &nbsp;·&nbsp; [WORKFLOW](#workflow) &nbsp;·&nbsp; [CASE STUDIES](#selected-work) &nbsp;·&nbsp; [EDUCATION](#education) &nbsp;·&nbsp; [CONTACT](#contact)
 
@@ -419,7 +427,7 @@ I do not present AI-generated implementation as proof of independent mastery of 
 - Testing, debugging workflows, and exploratory QA
 - Developer productivity and interactive user experiences
 
-## 06 / Education
+## 08 / Education
 
 **Rakhmonov IT School — Samarkand**  
 Frontend Development · 2022
@@ -428,14 +436,14 @@ Frontend Development · 2022
 - Frontend Development
 - HTML / CSS
 
-## 07 / Achievements
+## 09 / Achievements
 
 - Repeated first-place results in district-level IT competitions.
 - Participation in regional-level IT competitions.
 
 ---
 
-## 08 / Contact
+## 10 / Contact
 
 Interested in product development, AI-assisted engineering workflows, and opportunities where structured thinking and careful execution matter.
 
