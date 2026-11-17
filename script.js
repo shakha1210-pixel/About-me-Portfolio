@@ -125,6 +125,19 @@
       "Known modules: Achievement Engine, Challenge Engine, Event Engine, Logic-Hub Core, and Ranking Engine.",
       "Repository: https://github.com/shakha1210-pixel/Logic-Hub"
     ].join("\n"),
+    technologies: [
+      "TECHNOLOGY MAP",
+      "APEIRON: Python, FastAPI, SQLAlchemy, Pydantic, HTTPX, SQLite/PostgreSQL, HTML, CSS, and Vanilla JavaScript.",
+      "NEXUS: Python, FastAPI, React 18, TypeScript, Vite, PyWebView, Ollama, and OpenAI-compatible APIs.",
+      "LOGIC-HUB: JavaScript with a modular engine/core structure.",
+      "These are technologies used in the projects, not a claim of professional independent mastery in every tool."
+    ].join("\n"),
+    ai: [
+      "AI-ASSISTED WORKFLOW",
+      "Personal projects involve substantial AI assistance. AI tools help with implementation, review, and debugging.",
+      "The portfolio owner's stated focus is product direction, architecture planning, task decomposition, coordination, integration review, and product-level validation.",
+      "The interface's knowledge engine is local and rule-based. It is not connected to an external AI model."
+    ].join("\n"),
     education: [
       "LEARNING BACKGROUND",
       "Rakhmonov IT School, Samarkand — Frontend Development, 2022.",
@@ -181,6 +194,12 @@
       }
       if (/\b(logic hub|logic-hub|ranking engine|achievement engine|challenge engine)\b/.test(query)) {
         return { message: knowledge.logic, destination: "#work" };
+      }
+      if (/\b(technology|technologies|tech stack|stack|frameworks|programming languages)\b/.test(query)) {
+        return { message: knowledge.technologies, destination: "#work" };
+      }
+      if (/\b(ai assistance|ai tools|artificial intelligence|use ai|ai workflow)\b/.test(query)) {
+        return { message: knowledge.ai, destination: "#approach" };
       }
       if (/\b(education|school|study|studied|certificate|certification|competition|background)\b/.test(query)) {
         return { message: knowledge.education, destination: "#journey" };
