@@ -115,3 +115,7 @@ Update this document when:
 - hosting/build architecture changes;
 - a new runtime integration materially changes the security boundary;
 - the validation suite or CI delivery gates materially change.
+
+## 9. GitHub Pages prerequisite
+
+The repository must have GitHub Pages enabled with the publishing source set to **GitHub Actions** before the main-branch deployment job can configure and publish the site. Pull requests run static validation only; they do not attempt to configure Pages or deploy. A successful validation run is not evidence of a successful Pages deployment.
