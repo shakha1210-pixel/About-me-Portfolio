@@ -94,3 +94,19 @@ This log records meaningful repository changes and the validation actually perfo
 - GitHub Actions run [#5](https://github.com/shakha1210-pixel/About-me-Portfolio/actions/runs/44053703961) completed successfully.
 - The validation step passed with the README link/image integrity checks and the explicit meta-system documentation assertions included.
 - Build and deploy remained skipped for the pull-request event, as intended.
+
+## 2026-11-17 — CI permission and concurrency hardening
+
+**Finding**
+- The workflow originally granted `pages: write` and `id-token: write` at workflow scope, including the pull-request validation job.
+- A single global concurrency group could allow a PR validation run to cancel an in-progress main-branch Pages deployment.
+
+**Correction**
+- Scoped the validation job to `contents: read`.
+- Scoped Pages permissions to the build and deployment jobs that require them.
+- Scoped concurrency by workflow and Git ref, isolating PR checks from main-branch publishing.
+- Updated the system architecture to record these CI security boundaries.
+
+**Validation**
+- Awaiting the GitHub Actions run for this workflow hardening change.
+- No browser end-to-end test or successful Pages deployment is claimed.
