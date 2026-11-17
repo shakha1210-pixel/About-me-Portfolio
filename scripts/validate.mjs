@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
-import { dirname, resolve, sep } from "node:path";
+import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -28,6 +28,7 @@ check("required portfolio files and visual assets exist", () => {
 const html = read("index.html");
 const css = read("styles.css");
 const js = read("script.js");
+const readme = read("README.md");
 
 check("document metadata and language are present", () => {
   assert.match(html, /<html\s+lang="en"/i);
@@ -57,6 +58,23 @@ check("local HTML assets resolve", () => {
     return clean && !existsSync(resolve(root, clean));
   });
   assert.deepEqual(missing, [], `Missing local assets: ${missing.join(", ")}`);
+});
+
+check("README local links and image references resolve", () => {
+  const refs = [...readme.matchAll(/(?:href|src)="([^"]+)"|\\]\\(([^)]+)\\)/g)]
+    .map((match) => match[1] || match[2]);
+  const missing = refs.filter((ref) => {
+    if (!ref || ref.startsWith("#") || /^(?:[a-z]+:|\\/\\/)/i.test(ref)) return false;
+    const clean = decodeURIComponent(ref.split(/[?#]/, 1)[0]);
+    return clean && !existsSync(resolve(root, clean));
+  });
+  assert.deepEqual(missing, [], `Missing README references: ${missing.join(", ")}`);
+});
+
+check("README exposes the repository meta-system and local check command", () => {
+  assert.match(readme, /\\[System architecture\\]\\(\\.meta\\/architecture\\/system-overview\\.md\\)/);
+  assert.match(readme, /\\[Development log\\]\\(\\.meta\\/logs\\/DEVELOPMENT_LOG\\.md\\)/);
+  assert.match(readme, /npm run check/);
 });
 
 check("interactive terminal hooks exist in markup and script", () => {
