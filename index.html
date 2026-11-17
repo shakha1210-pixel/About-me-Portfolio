@@ -69,14 +69,27 @@
         <div class="console-metrics">
           <div><span>FOCUS</span><strong>PRODUCTS</strong></div><div><span>MODE</span><strong>EXPLORATION</strong></div><div><span>BASE</span><strong>UZ / UTC+5</strong></div>
         </div>
-        <div class="console-terminal">
-          <div class="terminal-heading"><span><i></i> INTERFACE COMMANDS</span><span>INPUT READY</span></div>
-          <div class="terminal-output" id="terminal-output" aria-live="polite">System initialized. Select a destination, operator.</div>
-          <div class="terminal-commands">
-            <a href="#work" data-command="projects">[ PROJECTS ]</a>
-            <a href="#about" data-command="profile">[ PROFILE ]</a>
-            <a href="#contact" data-command="contact">[ CONTACT ]</a>
+        <div class="console-terminal" id="command-terminal">
+          <div class="terminal-heading"><span><i></i> INTERFACE COMMANDS</span><span id="terminal-state">LOCAL MODE / READY</span></div>
+          <div class="terminal-output" id="terminal-output" role="status" aria-live="polite">System initialized. Type <b>help</b> to see available commands.</div>
+          <form class="terminal-form" id="terminal-form" autocomplete="off">
+            <label class="terminal-prompt" for="terminal-input" aria-label="Command prompt">›</label>
+            <input id="terminal-input" name="command" type="text" placeholder="Ask the interface or type a command..." spellcheck="false" aria-label="Enter a portfolio command">
+            <button class="terminal-submit" type="submit" aria-label="Run command">RUN <span>↗</span></button>
+          </form>
+          <div class="terminal-tools">
+            <div class="terminal-commands" aria-label="Suggested commands">
+              <button type="button" data-command="projects">[ PROJECTS ]</button>
+              <button type="button" data-command="about">[ PROFILE ]</button>
+              <button type="button" data-command="contact">[ CONTACT ]</button>
+              <button type="button" data-command="help">[ HELP ]</button>
+            </div>
+            <div class="terminal-voice">
+              <button type="button" class="voice-button" id="voice-input" aria-label="Use voice input" title="Use voice input">MIC <span>◉</span></button>
+              <button type="button" class="voice-button" id="voice-output" aria-pressed="false" aria-label="Enable spoken responses" title="Enable spoken responses">VOICE <span>OFF</span></button>
+            </div>
           </div>
+          <p class="terminal-hint">TIP: PRESS <kbd>/</kbd> TO FOCUS · <kbd>↑</kbd> PREVIOUS COMMAND · <kbd>ESC</kbd> TO EXIT</p>
         </div>
       </div>
       <div class="hero-index"><span>SCROLL TO EXPLORE</span><span class="scroll-line"></span><span>01 — 06</span></div>
