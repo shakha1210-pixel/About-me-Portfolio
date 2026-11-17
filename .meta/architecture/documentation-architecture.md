@@ -44,9 +44,10 @@ The root README should be organized as a deliberate narrative:
 6. **Selected work** — case studies with purpose, current implementation, contribution, limitations, and stack.
 7. **Architecture maps** — current state separated from target state.
 8. **Engineering decisions** — selected trade-offs and reasoning.
-9. **Technical interests** — areas of exploration.
-10. **Education and achievements** — evidence-backed background.
-11. **Contact** — reliable communication channels.
+9. **Repository meta-system** — links to architecture, decisions, development history, and automated validation.
+10. **Technical interests** — areas of exploration.
+11. **Education and achievements** — evidence-backed background.
+12. **Contact** — reliable communication channels.
 
 Sections may evolve, but the README should remain scannable and avoid repeating the same facts in multiple places.
 
