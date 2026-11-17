@@ -51,7 +51,7 @@ flowchart TB
 | Speech synthesis | Reads responses when supported and enabled | Optional browser API |
 | `scripts/validate.mjs` | Checks required files, metadata, IDs, fragment links, local assets, terminal hooks, and key destinations | Dependency-free Node.js static validation |
 | `package.json` | Exposes `npm run check` and `npm run validate` | No runtime dependencies |
-| GitHub Actions | Runs validation on pull requests and before publishing | CI/CD workflow |
+| GitHub Actions | Runs validation on pull requests and before publishing | Job-scoped permissions; branch/ref-scoped concurrency |
 | GitHub Pages | Serves the built static files | Hosting target; deployment must be verified independently |
 
 ## 4. Command interaction flow
@@ -90,6 +90,8 @@ The current portfolio work is maintained on `feat/premium-portfolio-foundation` 
 - User-entered command text is treated as input, not trusted markup.
 - Terminal responses are rendered with `textContent`, not interpolated as HTML.
 - No API keys or credentials belong in client-side source or this repository's documentation.
+- The validation job receives only `contents: read`; Pages publishing permissions are scoped to the jobs that need them.
+- Workflow concurrency is scoped by workflow and Git ref so pull-request validation cannot cancel a main-branch deployment.
 - Microphone access is optional and depends on browser support, permission, and secure-context requirements.
 - Voice output is opt-in and should remain disabled by default.
 - Reduced-motion preferences must be respected.
