@@ -51,3 +51,20 @@ This log records meaningful repository changes and the validation actually perfo
 - Validation infrastructure has been added to the feature branch.
 - The checks have not yet been executed in a local Node.js environment or by GitHub Actions; passing status must be recorded only after an actual run.
 - No browser end-to-end test or successful Pages deployment is claimed.
+
+## 2026-11-17 — CI boundary correction
+
+**Finding**
+- The first pull-request workflow run passed the Node.js validation job.
+- The Pages build then failed because the repository has not yet enabled/configured GitHub Pages; `actions/configure-pages` returned `Not Found`.
+- This is a repository hosting prerequisite, not a static validation failure.
+
+**Correction**
+- Restricted Pages build and deployment jobs to pushes or manual dispatches targeting `main`.
+- Pull requests now run the independent validation job without requiring Pages to be enabled.
+- Documented the GitHub Pages setup prerequisite in the system architecture.
+
+**Verification**
+- The initial run's `validate` job completed successfully.
+- The first run's build failure is retained here rather than represented as a passing deployment.
+- The corrected workflow still requires a fresh GitHub Actions run to verify the PR path.
